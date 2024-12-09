@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "942103513813",
+    "project_id": "digital-trainer-2f2c9",
+    "storage_bucket": "digital-trainer-2f2c9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942103513813:android:a58e26b53d13d21c1fb05c",
+        "android_client_info": {
+          "package_name": "com.example.digital_trainer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942103513813-ljjtgm6ppv0h76d51bm25q75fpk6833u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9rDKPZ6l0IYj8OAo1J7GxsR6Cd9B9G00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942103513813-ljjtgm6ppv0h76d51bm25q75fpk6833u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "942103513813-4a89a7lgloghopmta0ltco97srond686.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.digitalTrainer"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

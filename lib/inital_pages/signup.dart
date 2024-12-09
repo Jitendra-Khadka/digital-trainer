@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:digital_trainer/authentication_section/google_auth.dart';
 
 class Signup extends StatelessWidget {
   const Signup({super.key});
@@ -32,7 +33,7 @@ class Signup extends StatelessWidget {
                 ),
 
                 SizedBox(height: app_height*0.04),
-                sizeButton(PageButton("Signin with Google", (){}, app_width*0.04), app_width*0.55),
+                sizeButton(PageButton("Signin with Google", get_data, app_width*0.04), app_width*0.55),
                 SizedBox(height: app_height*0.01),
                 sizeButton(PageButton("Signin with Facebook", (){}, app_width*0.04), app_width*0.55),
                 SizedBox(height: app_height*0.01),
