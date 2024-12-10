@@ -4,14 +4,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 Future<UserCredential> google_sigin()async{
   final GoogleSignInAccount? selected_acc = await GoogleSignIn().signIn();
 
-  final GoogleSignInAuthentication? user_data = await selected_acc?.authentication;
+  print("This shit is working and what is your problem bitch ................................");
 
-  final credential = GoogleAuthProvider.credential(
+  final GoogleSignInAuthentication? user_data = await selected_acc?.authentication;
+  print("This is the value of user_data : $user_data //////////////////////////////>>>>>>>>>>>>>>>>>");
+
+  final user_credential = await GoogleAuthProvider.credential(
     accessToken: user_data?.accessToken,
     idToken: user_data?.idToken
   );
 
-  return FirebaseAuth.instance.signInWithCredential(credential);
+  return FirebaseAuth.instance.signInWithCredential(user_credential);
 }
 
 Future<void> logout_google()async{

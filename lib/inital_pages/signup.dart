@@ -1,3 +1,4 @@
+import 'package:digital_trainer/valid_user/home.dart';
 import 'package:flutter/material.dart';
 import 'package:digital_trainer/authentication_section/google_auth.dart';
 
@@ -6,6 +7,22 @@ class Signup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    void unavailable_function(){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("This feature is not available at the current moment.")),
+      );
+    }
+
+    void signupWithgoogle()async{
+      await get_data().then((_){
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => Home())
+        );
+      });
+
+    }
+
     final double app_height = MediaQuery.of(context).size.height;
     final double app_width = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -33,11 +50,11 @@ class Signup extends StatelessWidget {
                 ),
 
                 SizedBox(height: app_height*0.04),
-                sizeButton(PageButton("Signin with Google", get_data, app_width*0.04), app_width*0.55),
+                sizeButton(PageButton("Signin with Google",signupWithgoogle , app_width*0.04), app_width*0.55),
                 SizedBox(height: app_height*0.01),
-                sizeButton(PageButton("Signin with Facebook", (){}, app_width*0.04), app_width*0.55),
+                sizeButton(PageButton("Signin with Facebook", unavailable_function, app_width*0.04), app_width*0.55),
                 SizedBox(height: app_height*0.01),
-                sizeButton(PageButton("Signin with Twitter", (){}, app_width*0.04), app_width*0.55),
+                sizeButton(PageButton("Signin with Twitter", unavailable_function, app_width*0.04), app_width*0.55),
 
                 SizedBox(height: app_height*0.03),
 

@@ -1,4 +1,6 @@
+
 import "package:digital_trainer/inital_pages/first_page.dart";
+import "package:digital_trainer/user_status.dart";
 import "package:flutter/material.dart";
 import "package:firebase_core/firebase_core.dart";
 
@@ -8,10 +10,10 @@ void main()async {
   runApp(
     MaterialApp(
       theme: ThemeData(
-        scaffoldBackgroundColor: Color(0xFF3E3939)
+        scaffoldBackgroundColor: const Color(0xFF3E3939),
       ),
       debugShowCheckedModeBanner: false,
-      home: const FirstPage(),
+      home: const AuthenticatedorNot(),
     ),
   );
 }
