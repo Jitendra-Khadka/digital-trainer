@@ -1,4 +1,5 @@
 import "package:digital_trainer/inital_pages/first_page.dart";
+import "package:digital_trainer/valid_user/extract_data_api/extract_exercise.dart";
 import "package:digital_trainer/valid_user/home.dart";
 import "package:flutter/material.dart";
 import "package:firebase_auth/firebase_auth.dart";
@@ -12,6 +13,7 @@ class AuthenticatedorNot extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context,snapshot){
           if(snapshot.hasData){
+            availableExe();
             return Home();
           }
 

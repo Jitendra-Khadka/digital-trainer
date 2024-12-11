@@ -1,3 +1,4 @@
+import 'package:digital_trainer/valid_user/extract_data_api/extract_exercise.dart';
 import 'package:digital_trainer/valid_user/home.dart';
 import 'package:flutter/material.dart';
 import 'package:digital_trainer/authentication_section/google_auth.dart';
@@ -17,7 +18,10 @@ class Signup extends StatelessWidget {
     void signupWithgoogle()async{
       await get_data().then((_){
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => Home())
+            MaterialPageRoute(builder: (context){
+              availableExe();
+              return Home();
+            })
         );
       });
 
