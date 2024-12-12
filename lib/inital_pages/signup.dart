@@ -19,7 +19,7 @@ class Signup extends StatelessWidget {
       await get_data().then((_){
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context){
-              availableExe();
+              //Fetch_api();
               return Home();
             })
         );

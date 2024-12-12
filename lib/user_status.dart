@@ -13,7 +13,7 @@ class AuthenticatedorNot extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context,snapshot){
           if(snapshot.hasData){
-            availableExe();
+            //Fetch_api();
             return Home();
           }
 
