@@ -15,6 +15,18 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String? name = FirebaseAuth.instance.currentUser!.displayName;
   late Future<Collect_api_list> items;
+  final images = [
+    "images/back.png",
+    "images/cardio.png",
+    "images/chest.png",
+    "images/lower arms.jpg",
+    "images/lower legs.png",
+    "images/neck.jpg",
+    "images/shoulder.png",
+    "images/upper arms.jpg",
+    "images/upper legs.jpg",
+    "images/waist.jpg"
+  ];
 
   @override
   void initState(){
@@ -44,7 +56,7 @@ class _HomeState extends State<Home> {
 
                   Expanded(
                     child: ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30),
                       ),
@@ -64,7 +76,7 @@ class _HomeState extends State<Home> {
                             String datamodel  = snapshot.data!.all_items[index];
                             //name_and_image final_model = name_and_image(name: datamodel,);
                             return ExerciseTypes(
-                              //image_link: final_model.name,
+                              image: images[index],
                               target_area: datamodel,
                             );
                           },
