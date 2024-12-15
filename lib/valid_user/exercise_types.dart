@@ -1,8 +1,9 @@
 import 'package:digital_trainer/valid_user/extract_data_api/extract_exercise.dart';
+import 'package:digital_trainer/valid_user/specified_list.dart';
 import 'package:flutter/material.dart';
 
 class ExerciseTypes extends StatelessWidget {
-  final image;
+  final String image;
   final String? target_area;
   const ExerciseTypes({super.key, required this.target_area, required this.image});
 
@@ -18,7 +19,6 @@ class ExerciseTypes extends StatelessWidget {
           color: Color(0xFF565252),
         ),
         child: Center(
-          child:Expanded(
             child: Padding(
               padding: EdgeInsets.all(app_height*0.01),
               child: Row(
@@ -50,9 +50,13 @@ class ExerciseTypes extends StatelessWidget {
             ),
           ),
         ),
-      ),
       onTap: ()async{
-        //await availableExe();
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SpecifiedList(image: image),
+          ),
+        );
       }
     );
   }

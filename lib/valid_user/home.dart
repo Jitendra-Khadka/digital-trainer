@@ -15,7 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String? name = FirebaseAuth.instance.currentUser!.displayName;
   late Future<Collect_api_list> items;
-  final images = [
+  final List<String> images = [
     "images/back.png",
     "images/cardio.png",
     "images/chest.png",
