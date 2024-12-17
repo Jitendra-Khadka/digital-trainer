@@ -16,13 +16,13 @@ class _HomeState extends State<Home> {
   String? name = FirebaseAuth.instance.currentUser!.displayName;
   late Future<Collect_api_list> items;
   final List<String> images = [
-    "images/back.png",
-    "images/cardio.png",
-    "images/chest.png",
+    "images/back.jpg",
+    "images/cardio.jpg",
+    "images/chest.jpg",
     "images/lower arms.jpg",
-    "images/lower legs.png",
+    "images/lower legs.jpg",
     "images/neck.jpg",
-    "images/shoulder.png",
+    "images/shoulder.jpg",
     "images/upper arms.jpg",
     "images/upper legs.jpg",
     "images/waist.jpg"
@@ -50,7 +50,6 @@ class _HomeState extends State<Home> {
                 mainAxisSize : MainAxisSize.min,
                 children: [
                   Padding(padding: EdgeInsets.all(20), child: Text("Hi ! $name", style : TextStyle(color: Colors.white, fontSize: app_width*0.05)),),
-
                   SizedBox(height: app_height*0.12),
                   Padding(padding: EdgeInsets.all(20), child: Text("Body Parts", style : TextStyle(color: Colors.white, fontSize: app_width*0.06)),),
 

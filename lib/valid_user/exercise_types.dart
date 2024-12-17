@@ -1,5 +1,5 @@
 import 'package:digital_trainer/valid_user/extract_data_api/extract_exercise.dart';
-import 'package:digital_trainer/valid_user/specified_list.dart';
+import 'package:digital_trainer/valid_user/extract_data_api/specialized_dictianary/specified_list.dart';
 import 'package:flutter/material.dart';
 
 class ExerciseTypes extends StatelessWidget {
@@ -30,7 +30,7 @@ class ExerciseTypes extends StatelessWidget {
                       padding: EdgeInsets.zero,
                       height: app_height*0.12,
                       width: app_width*0.30,
-                      child: Image.asset(image),
+                      child: Image.asset(image, fit: BoxFit.cover),
                     ),
                   ),
                   Container(
@@ -54,7 +54,7 @@ class ExerciseTypes extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => SpecifiedList(image: image),
+            builder: (context) => SpecifiedList(image: image, name: target_area!),
           ),
         );
       }

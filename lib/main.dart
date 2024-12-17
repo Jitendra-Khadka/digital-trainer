@@ -10,7 +10,7 @@ void main()async {
   runApp(
     MaterialApp(
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFF3E3939),
+        //scaffoldBackgroundColor: const Color(0xFF3E3939),
       ),
       debugShowCheckedModeBanner: false,
       home: const AuthenticatedorNot(),
