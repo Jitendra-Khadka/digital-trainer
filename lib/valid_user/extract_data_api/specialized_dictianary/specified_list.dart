@@ -14,13 +14,29 @@ class SpecifiedList extends StatefulWidget {
 class _SpecifiedListState extends State<SpecifiedList> {
 
   late Future<DataModel> data;
-  List<String> fruits = ["apple","banana","orange", "cocnut"];
+  List<String> fruits = ["apple","banana","orange", "cocnut","kra"];
+  late List<String> selected;
+  TextEditingController controller = TextEditingController();
 
   @override
-  // void initState(){
-  //   super.initState();
-  //   data = fetch_exercise(widget.name);
-  // }
+  void initState(){
+    super.initState();
+
+    selected = fruits;
+    controller.addListener((){
+      setState((){
+        if(controller.text.isEmpty){
+          selected = fruits;
+        }
+
+        else{
+          selected = fruits.where((fruit){
+            return fruit.toLowerCase().contains(controller.text.toLowerCase());
+          }).toList();
+        }
+      });
+    });
+  }
 
   @override
   void dispose(){
@@ -77,30 +93,36 @@ class _SpecifiedListState extends State<SpecifiedList> {
                         thickness: app_height* 0.002,
                       ),
 
-                      Autocomplete<String>(
-                          optionsBuilder: (TextEditingValue typed_value){
-                            if(typed_value.text.isEmpty){
-                              return Iterable.empty();
-                            }
-                            else{
-                              return fruits.where((fruit){
-                                print("this is the current typed letters : ${typed_value.text}");
-                                return fruit.toLowerCase().contains(typed_value.text.toLowerCase());
-                              });
-                            }
-                          }
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: app_width* 0.015),
+                        child: TextField(
+                          controller: controller,
+                          decoration: InputDecoration(
+                            hintText: "Search",
+                            hintStyle: TextStyle(color: Colors.white54),
+                            suffixIcon: Icon(Icons.search, color: Colors.blue),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(25),
+                              borderSide: BorderSide(color: Colors.blue),
+                            ),
+
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.blue),
+                            ),
+                          ),
+
+                        ),
                       ),
 
-                      // Expanded(
-                      //   child: Container(
-                      //     //color: Colors.purple,
-                      //     // child: ListView(
-                      //     //   children: [
-                      //     //     Text("Konse color le chade paney ho ?"),
-                      //     //   ],
-                      //     // ),
-                      //   ),
-                      // ),
+                      Expanded(
+                        child: Container(
+                          color: Colors.purple,
+                          child: ListView(
+                            children: selected.map((fruit)=> ListTile(title: Text(fruit))).toList(),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
