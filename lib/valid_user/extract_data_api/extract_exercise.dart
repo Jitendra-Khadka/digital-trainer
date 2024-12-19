@@ -38,7 +38,7 @@ class name_and_image{
   }
 }
 
-Future<dynamic> fetch_exercise(String body_part)async{
+Future<List<dynamic>> fetch_exercise(String body_part)async{
   try{
     final exercise = await http.get(Uri.parse("https://exercisedb.p.rapidapi.com/exercises/bodyPart/$body_part?limit=10&offset=0"),
     headers: {
@@ -49,31 +49,42 @@ Future<dynamic> fetch_exercise(String body_part)async{
     if(exercise.statusCode == 200){
       final decoded_data = jsonDecode(exercise.body);
       print("data execrated successfully boy ........... hehe boy /////////////////");
-      return decoded_data.map((exercise_type){
-        return DataModel.fromjson(exercise_type);
+      final final_data = decoded_data.map((json){
+        print(json.runtimeType);
+        return DataModel(
+            name: json['name'],
+            gifUrl: json["gifUrl"],
+            equipment: json["equipment"],
+            instructions : json["instructions"]
+        );
       }).toList();
+
+      //print("This is the value of final_data : \n$final_data");
+      return final_data;
     }
     else{
-      return  Text("Could not fetch data from the Api");
+      return  throw Exception("Failed to extract data from APi");
     }
   }catch(e){
+    print("This is the error : $e");
+    print("hello hello my testing my testing");
     throw const FormatException("Connect fetch data from API");
   }
 }
 
 class DataModel{
-  String name;
+  final name;
   final gifUrl;
-  String equipment;
-  List<String> instructions;
+  final equipment;
+  List<dynamic> instructions;
   DataModel({required this.name, required this.gifUrl, required this.equipment, required this.instructions});
 
-  factory DataModel.fromjson(json){
+  factory DataModel.fromjson(Map<String, dynamic>json){
     return DataModel(
       name: json['name'],
       gifUrl: json["gifUrl"],
       equipment: json["equipment"],
-      instructions: json["instructions"]
+      instructions: json["instructions"] as List<String>
     );
   }
 }
